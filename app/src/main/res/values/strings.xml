@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">kestir</string>
+    <string name="tel">Telefon Numaranız</string>
+    <string name="sifre">Şifreniz</string>
+    <string name="giris">GİRİŞ YAP</string>
+    <string name="kayit">KAYIT OL</string>
+    <string name="sifreunut">Şifremi Unuttum</string>
+    <string name="admin">Admin Giriş</string>
+    <string name="mail">E-Posta Adresiniz</string>
+    <string name="ad">Adınız Soyadınız</string>
+    <string name="randevularım">RANDEVULARIM</string>
+    <string name="randevual">RANDEVU AL</string>
+    <string name="iletisim">İLETİŞİM</string>
+    <string name="yenisifre">ŞİFRE YENİLE</string>
 </resources>
