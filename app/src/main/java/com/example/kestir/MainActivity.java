@@ -24,4 +24,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(), MainActivity4.class);
         startActivity(intent);
     }
+
+    public void gonder5(View view) {
+        Intent intent=new Intent(getApplicationContext(), MainActivity5.class);
+        startActivity(intent);
+    }
+
+    public void gonder9(View view) {
+    }
 }

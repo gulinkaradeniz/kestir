@@ -12,4 +12,15 @@
     <string name="randevual">RANDEVU AL</string>
     <string name="iletisim">İLETİŞİM</string>
     <string name="yenisifre">ŞİFRE YENİLE</string>
+    <string name="islem">İŞLEM SEÇİMİ</string>
+    <string name="islem1">Saç Kesimi</string>
+    <string name="islem2">Saç Boyama</string>
+    <string name="islem3">Fön</string>
+    <string name="islem4">Kaş Bıyık</string>
+    <string name="islem5">Makyaj</string>
+    <string name="islemonay">İŞLEMLERİ ONAYLA</string>
+    <string name="tarih">TARİH</string>
+    <string name="tarihok">TARİHİ ONAYLA</string>
+    <string name="saat">UYGUN SAATLER</string>
+    <string name="saatok">SAATİ ONAYLA</string>
 </resources>
