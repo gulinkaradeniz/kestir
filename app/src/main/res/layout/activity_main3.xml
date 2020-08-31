@@ -4,7 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/resim13"
     tools:context=".MainActivity4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24000001">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.22000003"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="259dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/yenisifre"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.19999999" />
+    </LinearLayout>
+
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="250dp"
@@ -17,6 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="250dp"
@@ -46,33 +88,5 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
         app:layout_constraintVertical_bias="0.206" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="64dp"
-        android:onClick="gonder4"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22000003"
-        app:srcCompat="@drawable/back" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="@string/yenisifre"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

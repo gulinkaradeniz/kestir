@@ -4,94 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/resim13"
     tools:context=".MainActivity">
 
 
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/phone"
-        android:ems="10"
-        android:hint="@string/tel"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/lock"
-        android:ems="10"
-        android:hint="@string/sifre"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-        app:layout_constraintVertical_bias="0.043" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:background="@drawable/button"
-        android:text="@string/giris"
-        android:onClick="gonder9"
-        android:textAllCaps="false"
+        android:orientation="vertical"
+        android:backgroundTint="@color/renk1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.144" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.120000005">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="@string/kayit"
-        android:onClick="gonder"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.448"
-        tools:ignore="OnClick" />
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@drawable/phone"
+            android:ems="10"
+            android:hint="@string/tel"
+            android:inputType="phone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sifreunut"
-        android:onClick="gonder3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.339" />
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lock"
+            android:ems="10"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/sifre"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
+            app:layout_constraintVertical_bias="0.043" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:onClick="gonder9"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/giris"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+            app:layout_constraintVertical_bias="0.144" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:onClick="gonder"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/kayit"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+            app:layout_constraintVertical_bias="0.448"
+            tools:ignore="OnClick" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="gonder3"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/sifreunut"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.25" />
+
+    </LinearLayout>
+
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="161dp"
-        android:layout_height="271dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="163dp"
+        android:layout_height="221dp"
         android:onClick="gonder5"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13999999"
         app:srcCompat="@drawable/hair" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
