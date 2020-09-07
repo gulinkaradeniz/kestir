@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/resim13"
-    tools:context=".MainActivity">
+    tools:context=".giris">
 
 
     <LinearLayout
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.120000005">
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/et_telefon_giris"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/et_sifre_giris"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/lock"
@@ -54,15 +54,15 @@
             app:layout_constraintVertical_bias="0.043" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_giris"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:onClick="gonder9"
+            android:background="@drawable/button_selector"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:text="@string/giris"
+            android:onClick="gonder_girisyap"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,11 +72,11 @@
             app:layout_constraintVertical_bias="0.144" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_kayit_ol"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:onClick="gonder"
+            android:background="@drawable/button_selector"
+            android:onClick="gonder_giris"
             android:layout_marginLeft="50dp"
             android:layout_marginBottom="10dp"
             android:text="@string/kayit"
@@ -93,7 +93,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="gonder3"
+            android:onClick="gonder_sifre_yenile"
             android:layout_marginLeft="125dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
@@ -102,7 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintTop_toBottomOf="@+id/button_saat_onay"
             app:layout_constraintVertical_bias="0.25" />
 
     </LinearLayout>
@@ -112,7 +112,7 @@
         android:id="@+id/imageView4"
         android:layout_width="163dp"
         android:layout_height="221dp"
-        android:onClick="gonder5"
+        android:onClick="gonder_islem_secimi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

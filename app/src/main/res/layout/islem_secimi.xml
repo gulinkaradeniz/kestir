@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/resim13"
-    tools:context=".MainActivity5">
+    tools:context=".islem_secimi">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13">
+        app:layout_constraintVertical_bias="0.110000014">
 
         <ImageView
             android:id="@+id/imageView"
@@ -49,14 +49,16 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="350dp"
         android:layout_height="300dp"
-        android:orientation="vertical"
         android:background="@drawable/button"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.13">
 
         <CheckBox
             android:id="@+id/checkBox2"
@@ -116,20 +118,17 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button_islem"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
         android:background="@drawable/button"
-        android:onClick="gonder5"
         android:text="@string/islemonay"
         android:textAllCaps="false"
+        android:onClick="gonder_islem_onay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.206" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,16 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity4 extends AppCompatActivity {
+public class kayit_ol extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.kayit_ol);
     }
 
-    public void gonder4(View view) {
-        Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-    }
 }

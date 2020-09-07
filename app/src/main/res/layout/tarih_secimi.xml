@@ -5,25 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/resim13"
-    tools:context=".MainActivity7">
+    tools:context=".tarih_secimi">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/datePicker1"
+        app:layout_constraintBottom_toTopOf="@+id/calendar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="18dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="35dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="50dp"
             app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
             app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintHorizontal_bias="0.28"
@@ -34,10 +33,10 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="253dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="@string/saat"
+            android:text="@string/tarih"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,37 +45,39 @@
             app:layout_constraintVertical_bias="0.19999999" />
     </LinearLayout>
 
-    <TimePicker
-        android:id="@+id/datePicker1"
-        android:layout_width="224dp"
-        android:layout_height="122dp"
-        android:timePickerMode="spinner"
+
+    <CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.39" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button_saat_onay"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="@string/saatok"
+        android:text="@string/tarihok"
         android:textAllCaps="false"
+        android:onClick="gonder_saat_secimi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker1" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="0.19999999" />
 
-
-    <!--<TimePicker android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:descendantFocusability="blocksDescendants">
-        <requestFocus />
-    </TimePicker>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+

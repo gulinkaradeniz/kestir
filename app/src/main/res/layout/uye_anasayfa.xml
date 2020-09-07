@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/resim13"
-    tools:context=".MainActivity3">
+    tools:context=".uye_anasayfa">
 
     <ImageView
         android:id="@+id/imageView"
@@ -29,6 +29,7 @@
         android:layout_marginBottom="344dp"
         android:background="@drawable/button"
         android:text="@string/randevual"
+        android:onClick="gonder_islem_secimi"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

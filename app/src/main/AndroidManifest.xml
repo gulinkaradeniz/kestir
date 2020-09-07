@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity7"></activity>
-        <activity android:name=".MainActivity6" />
-        <activity android:name=".MainActivity5" />
-        <activity android:name=".MainActivity4" />
-        <activity android:name=".MainActivity3" />
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".listele"></activity>
+        <activity android:name=".randevular" />
+        <activity android:name=".randevu_basarili" />
+        <activity android:name=".saat_secimi" />
+        <activity android:name=".tarih_secimi" />
+        <activity android:name=".islem_secimi" />
+        <activity android:name=".sifre_yenile" />
+        <activity android:name=".uye_anasayfa" />
+        <activity android:name=".kayit_ol" />
+        <activity android:name=".giris">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
