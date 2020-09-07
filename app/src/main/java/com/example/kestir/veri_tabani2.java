@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.Date;
 import java.util.List;
 
 public class veri_tabani2 extends SQLiteOpenHelper {
@@ -25,7 +24,7 @@ public class veri_tabani2 extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db2) {
-        String createTableStatement = "CREATE TABLE " + TABLE_NAME2 + "(" + ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT," + ISLEM + " TEXT," + TARIH + " TEXT," + SAAT + " TEXT)";
+        String createTableStatement = "CREATE TABLE " + TABLE_NAME2 + "(" + ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT," + ISLEM + " TEXT," + TARIH + " DATE," + SAAT + " TEXT)";
         db2.execSQL(createTableStatement);
     }
 
@@ -35,40 +34,21 @@ public class veri_tabani2 extends SQLiteOpenHelper {
         onCreate(db2);
 
     }
-    public long Ekle(String islem,String saat){
+    public long Ekle(String islem, String saat, String tarih){
         SQLiteDatabase db2=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
 
         cv.put(ISLEM,islem.trim());
         cv.put(SAAT,saat.trim());
+        cv.put(TARIH,tarih.trim());
 
         long id2=db2.insert(TABLE_NAME2,null,cv);
+
 
         db2.close();
         return id2;
     }
-    public long Tarih_Ekle(İslemler tarih){
-        SQLiteDatabase db2=this.getWritableDatabase();
-        ContentValues cv=new ContentValues();
 
-        cv.put(TARIH,İslemler.getTarih());
-
-        long id2=db2.insert(TABLE_NAME2,null,cv);
-
-        db2.close();
-        return id2;
-    }
-    public long Saat_Ekle(String saat){
-        SQLiteDatabase db2=this.getWritableDatabase();
-        ContentValues cv=new ContentValues();
-
-        cv.put(SAAT,saat.trim());
-
-        long id2=db2.insert(TABLE_NAME2,null,cv);
-
-        db2.close();
-        return id2;
-    }
 
 
     //public long İslemEkle(String ISLEM,String TARIH,String SAAT) {

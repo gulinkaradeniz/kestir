@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,6 +18,7 @@ import java.util.List;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.example.kestir.veri_tabani2.ISLEM;
 import static com.example.kestir.veri_tabani2.SAAT;
+import static com.example.kestir.veri_tabani2.TARIH;
 
 public class saat_secimi extends AppCompatActivity {
     RadioGroup radioGroup;
@@ -34,72 +36,78 @@ public class saat_secimi extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int id = group.getCheckedRadioButtonId();
                 veri_tabani2 db2= new veri_tabani2(getApplicationContext());
-
                 switch (id){
                     case R.id.radioButton:
                         Toast.makeText(saat_secimi.this, "saat:10:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"10:00");
+                            //Intent al=getIntent();
+                            //String r1=al.getStringExtra("saat_bilgisi");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"10:00",TARIH);
                         }
                         break;
                     case R.id.radioButton2:
                         Toast.makeText(saat_secimi.this, "saat:11:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"11:00");
+                            //Intent al=getIntent();
+                            //String r2=al.getStringExtra("saat_bilgisi");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"11:00",TARIH);
                         }
                         break;
                     case R.id.radioButton3:
                         Toast.makeText(saat_secimi.this, "saat:12:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"12:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"12:00",TARIH);
                         }
                         break;
                     case R.id.radioButton4:
                         Toast.makeText(saat_secimi.this, "saat:13:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"13:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"13:00",TARIH);
                         }
                         break;
                     case R.id.radioButton5:
                         Toast.makeText(saat_secimi.this, "saat:14:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"14:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"14:00",TARIH);
                         }
                         break;
                     case R.id.radioButton6:
                         Toast.makeText(saat_secimi.this, "saat:15:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"15:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"15:00",TARIH);
                         }
                         break;
                     case R.id.radioButton7:
                         Toast.makeText(saat_secimi.this, "saat:16:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"16:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"16:00",TARIH);
                         }
                         break;
                     case R.id.radioButton8:
                         Toast.makeText(saat_secimi.this, "saat:17:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"17:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"17:00",TARIH);
                         }
                         break;
                     case R.id.radioButton9:
                         Toast.makeText(saat_secimi.this, "saat:18:00", LENGTH_SHORT).show();
                         if (id!=0){
-                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"18:00");
+                            long id2=db2.Ekle(ISLEM,SAAT+"-"+"18:00",TARIH);
                         }
                         break;
                     default:
                         Toast.makeText(saat_secimi.this, "BİR SAAT SEÇİNİZ", LENGTH_SHORT).show();
                         break; }
+
             }
         } );
     }
 
     public void gonder_randevu_basarili(View view) {
-        Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
+        Intent intent=new Intent(getApplicationContext(), randevular.class);
         startActivity(intent);
 
     }
+
+
 }

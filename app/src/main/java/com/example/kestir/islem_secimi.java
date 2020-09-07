@@ -29,7 +29,9 @@ public class islem_secimi extends AppCompatActivity {
         checkBox5 = findViewById(R.id.checkBox5);
         checkBox6 = findViewById(R.id.checkBox6);
         button_islem = findViewById(R.id.button_islem);
+
         final veri_tabani2 db2= new veri_tabani2(getApplicationContext());
+        String c2;
 
 
 
@@ -41,7 +43,10 @@ public class islem_secimi extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     Toast.makeText(islem_secimi.this, "Saç Kesimi seçildi.", Toast.LENGTH_SHORT).show();
-                    long id2=db2.Ekle(ISLEM+"-"+"Saç Kesimi",SAAT);
+                    //Intent al=getIntent();
+                    //String c2=al.getStringExtra("islem_bilgisi");
+                    long id2=db2.Ekle(ISLEM+"-"+"Saç Kesimi",SAAT,TARIH);
+
                 } else {
                     Toast.makeText(islem_secimi.this, "Saç Kesimi iptal edildi.", Toast.LENGTH_SHORT).show();
                 }
@@ -52,7 +57,9 @@ public class islem_secimi extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         Toast.makeText(islem_secimi.this, "Saç Boyama seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Saç Boyama",SAAT);
+                        //Intent al=getIntent();
+                        //String c3=al.getStringExtra("islem_bilgisi");
+                        long id2=db2.Ekle(ISLEM+"-"+"Saç Boyama",SAAT,TARIH);
                     } else {
                         Toast.makeText(islem_secimi.this, "Saç Boyama iptal edildi.", Toast.LENGTH_SHORT).show();
                     }
@@ -63,7 +70,7 @@ public class islem_secimi extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         Toast.makeText(islem_secimi.this, "Fön seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Fön",SAAT);
+                        long id2=db2.Ekle(ISLEM+"-"+"Fön",SAAT,TARIH);
                     } else {
                         Toast.makeText(islem_secimi.this, "Fön iptal edildi.", Toast.LENGTH_SHORT).show();
                     }
@@ -74,7 +81,7 @@ public class islem_secimi extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         Toast.makeText(islem_secimi.this, "Kaş Bıyık seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Kaş Bıyık",SAAT);
+                        long id2=db2.Ekle(ISLEM+"-"+"Kaş Bıyık",SAAT,TARIH);
                     } else {
                         Toast.makeText(islem_secimi.this, "Kaş Bıyık iptal edildi.", Toast.LENGTH_SHORT).show();
                     }
@@ -85,7 +92,7 @@ public class islem_secimi extends AppCompatActivity {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         Toast.makeText(islem_secimi.this, "Makyaj seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Makyaj",SAAT);
+                        long id2=db2.Ekle(ISLEM+"-"+"Makyaj",SAAT,TARIH);
                     } else {
                         Toast.makeText(islem_secimi.this, "Makyaj iptal edildi.", Toast.LENGTH_SHORT).show();
                     }
@@ -95,7 +102,7 @@ public class islem_secimi extends AppCompatActivity {
     }
 
     public void gonder_islem_onay(View view) {
-        Intent intent=new Intent(getApplicationContext(), saat_secimi.class);
+        Intent intent=new Intent(getApplicationContext(), tarih_secimi.class);
         startActivity(intent);
     }
 }
