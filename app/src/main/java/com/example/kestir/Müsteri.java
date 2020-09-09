@@ -1,10 +1,13 @@
 package com.example.kestir;
 
+import androidx.annotation.Nullable;
+
 public class Müsteri {
     private String Adsoyad;
     private String Mail;
     private String Telefon;
     private String Sifre;
+
 
     //Yapıcı metod
     public Müsteri() {
@@ -17,6 +20,7 @@ public class Müsteri {
         Telefon = telefon;
         Sifre = sifre;
     }
+
     //set metoduyla değer ataması yaptık
     public void setAdsoyad(String adsoyad) {
         Adsoyad = adsoyad;
@@ -51,3 +55,4 @@ public class Müsteri {
         return Sifre;
     }
 }
+

@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class giris extends AppCompatActivity {
 
     EditText et_telefon_giris,et_sifre_giris;
+    private veri_tabani db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +27,24 @@ public class giris extends AppCompatActivity {
     public void gonder_girisyap(View view) {
         String telefon_giris=et_telefon_giris.getText().toString();
         String sifre_giris=et_sifre_giris.getText().toString();
-
-        Intent al=getIntent();
-        String alinanbilgi1=al.getStringExtra("telefon_bilgi");
-        String alinanbilgi2=al.getStringExtra("sifre_bilgi");
-
-        if (telefon_giris.equals(alinanbilgi1)||sifre_giris.equals(alinanbilgi2)){
-            Toast.makeText(this, "Giriş Başarılı", Toast.LENGTH_SHORT).show();
+        if(telefon_giris.equals("")||sifre_giris.equals("")){
+            Toast.makeText(giris.this, "Telefon ve şifre giriniz.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Boolean Telefon_sifre=db.Telefon_sifre(telefon_giris,sifre_giris);
+            if (Telefon_sifre){
             Intent intent=new Intent(getApplicationContext(), uye_anasayfa.class);
             startActivity(intent);
+            }
+            else{
+                Toast.makeText(giris.this, "BİLGİLERİNİZİ TEKRAR KONTROL EDİNİZ.", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        else{
-        Toast.makeText(this, "Telefon ve şifrenizi kontrol ediniz.", Toast.LENGTH_SHORT).show();}
+
     }
     public void gonder_giris(View view) {
-            Intent intent=new Intent(getApplicationContext(), kayit_ol.class);
+        Intent intent=new Intent(getApplicationContext(), kayit_ol.class);
         startActivity(intent);
 
     }

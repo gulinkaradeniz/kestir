@@ -25,13 +25,13 @@ public class listele extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listele);
         //Verilerin listelenmesi
-        ListView list_liste=(ListView) findViewById(R.id.list_liste);
+        /*ListView list_liste=(ListView) findViewById(R.id.list_liste);
         int idler[]={R.id.tv_adsoyad,R.id.tv_mail,R.id.tv_telefon,R.id.tv_sifre};
         String kolonlar[] ={veri_tabani.AD,veri_tabani.MAIL,veri_tabani.TELEFON,veri_tabani.SIFRE};
         veri_tabani db=new veri_tabani(this);
         Cursor cursor =db.getTumKayitlarCursor();
         SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.custom_list,cursor,kolonlar,idler);
-        list_liste.setAdapter(adapter);
+        list_liste.setAdapter(adapter);*/
 
 
     }

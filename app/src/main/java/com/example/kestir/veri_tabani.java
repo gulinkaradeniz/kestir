@@ -2,6 +2,7 @@ package com.example.kestir;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -23,6 +24,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
     public static final String SIFRE ="sifre";
 
     public List<String> ArrayList;
+    //private Object Müsteri;
 
     public veri_tabani(Context context) {
         super(context,DATABASE_NAME, null, 1);
@@ -30,7 +32,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement ="CREATE TABLE " +TABLE_NAME+"(" +ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +AD+" TEXT," +MAIL+" TEXT," +TELEFON+" TEXT," +SIFRE+" TEXT)";
+        String createTableStatement ="CREATE TABLE " +TABLE_NAME+"(" +ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +AD+" TEXT," +MAIL+" TEXT," +TELEFON+" TEXT," +SIFRE+" INT)";
         db.execSQL(createTableStatement);
     }
 
@@ -41,7 +43,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
     }
 
-    public long KayitEkle(Müsteri müsteri) {
+    public boolean KayitEkle(Müsteri müsteri) {
         SQLiteDatabase db=getWritableDatabase();
         ContentValues cv=new ContentValues();
 
@@ -51,9 +53,21 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         cv.put(SIFRE,müsteri.getSifre());
 
         long id=db.insert(TABLE_NAME,null,cv);
+        if(id==-1) return false;
+        else return true;
+    }
 
-        db.close();
-        return id;
+
+    public Boolean Telefon_sifre(String telefon,String sifre){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor c=db.rawQuery("SELECT * from müsteri_tablosu where telefon and sifre ",new String[]{TELEFON,SIFRE});
+        int cursorcount =c.getCount();
+        if(cursorcount>0){
+            return true;
+        }
+        else{
+        return false;}
+
     }
 
     public List<Müsteri> TümKayitlariGetir() {
