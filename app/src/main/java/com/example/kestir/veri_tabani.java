@@ -57,18 +57,21 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         else return true;
     }
 
-
-    public Boolean Telefon_sifre(String telefon,String sifre){
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor c=db.rawQuery("SELECT * from müsteri_tablosu where telefon and sifre ",new String[]{TELEFON,SIFRE});
-        int cursorcount =c.getCount();
-        if(cursorcount>0){
+    public boolean Telefon_sifre(String telefon,String sifre){
+            SQLiteDatabase db=this.getReadableDatabase();
+            String query = "SELECT * FROM müsteri_tablosu WHERE telefon = '"+telefon+"' AND sifre = '"+sifre+"'";
+            Cursor c=db.rawQuery(query, null);
+            c.moveToFirst();
+            int cursorcount =c.getCount();
+            if(cursorcount>0){
             return true;
         }
         else{
         return false;}
 
     }
+    
+
 
     public List<Müsteri> TümKayitlariGetir() {
 

@@ -40,18 +40,12 @@ public class kayit_ol extends AppCompatActivity {
             else{
                 veri_tabani db= new veri_tabani(getApplicationContext());
                 boolean id=db.KayitEkle(müsteri);
+                Toast.makeText(kayit_ol.this, "KAYIT BAŞARILI.", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(getApplicationContext(), giris.class);
                 startActivity(intent);
 
 
             }
-
-            /*if (id==-1){
-                Toast.makeText(kayit_ol.this, "HATA", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(kayit_ol.this, "Kayıt işlemi başarılı.", Toast.LENGTH_SHORT).show();
-            }*/
-
         }catch (Exception e){
             Toast.makeText(kayit_ol.this, "HAY AKSİ", Toast.LENGTH_SHORT).show();
 
