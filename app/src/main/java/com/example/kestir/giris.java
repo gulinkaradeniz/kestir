@@ -31,7 +31,7 @@ public class giris extends AppCompatActivity {
     }
 
     public void gonder_sifre_yenile(View view) {
-        Intent intent=new Intent(getApplicationContext(), saat_secimi.class);
+        Intent intent=new Intent(getApplicationContext(), sifre_yenile.class);
         startActivity(intent);
     }
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintBottom_toTopOf="@+id/Sifre_yenile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,12 +47,12 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/Telefon_yenile"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/phone"
         android:ems="10"
-        android:hint="@string/tel"
+        android:hint="5XX XXX XXXX"
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/Sifre_yenile"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/lock"
@@ -71,21 +71,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
+        app:layout_constraintTop_toBottomOf="@+id/Telefon_yenile"
         app:layout_constraintVertical_bias="0.043" />
 
     <Button
-        android:id="@+id/button_saat_onay"
+        android:id="@+id/button_sifre_yenile"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:text="@string/yenisifre"
         android:textAllCaps="false"
+        android:onClick="gonder_sifre_yenile2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/Sifre_yenile"
         app:layout_constraintVertical_bias="0.206" />
 
 

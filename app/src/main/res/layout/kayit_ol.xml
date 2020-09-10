@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/phone"
         android:ems="10"
-        android:hint="@string/tel"
+        android:hint="5XX XXX XXXX"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/et_sifre"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,7 +2,7 @@ package com.example.kestir;
 
 import androidx.annotation.Nullable;
 
-public class Müsteri {
+public class Musteri {
     private String Adsoyad;
     private String Mail;
     private String Telefon;
@@ -10,11 +10,11 @@ public class Müsteri {
 
 
     //Yapıcı metod
-    public Müsteri() {
+    public Musteri() {
         //Yapıcı metod
     }
 
-    public Müsteri(String adsoyad, String mail, String telefon, String sifre) {
+    public Musteri(String adsoyad, String mail, String telefon, String sifre) {
         Adsoyad = adsoyad;
         Mail = mail;
         Telefon = telefon;

@@ -2,7 +2,6 @@ package com.example.kestir;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -43,14 +42,14 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
     }
 
-    public boolean KayitEkle(Müsteri müsteri) {
+    public boolean KayitEkle(Musteri musteri) {
         SQLiteDatabase db=getWritableDatabase();
         ContentValues cv=new ContentValues();
 
-        cv.put(AD,müsteri.getAdsoyad());
-        cv.put(MAIL,müsteri.getMail());
-        cv.put(TELEFON,müsteri.getTelefon());
-        cv.put(SIFRE,müsteri.getSifre());
+        cv.put(AD, musteri.getAdsoyad());
+        cv.put(MAIL, musteri.getMail());
+        cv.put(TELEFON, musteri.getTelefon());
+        cv.put(SIFRE, musteri.getSifre());
 
         long id=db.insert(TABLE_NAME,null,cv);
         if(id==-1) return false;
@@ -58,22 +57,45 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
     }
 
     public boolean Telefon_sifre(String telefon,String sifre){
-            SQLiteDatabase db=this.getReadableDatabase();
-            String query = "SELECT * FROM müsteri_tablosu WHERE telefon = '"+telefon+"' AND sifre = '"+sifre+"'";
-            Cursor c=db.rawQuery(query, null);
-            c.moveToFirst();
-            int cursorcount =c.getCount();
-            if(cursorcount>0){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String query = "SELECT * FROM müsteri_tablosu WHERE telefon = '"+telefon+"' AND sifre = '"+sifre+"'";
+        Cursor c=db.rawQuery(query, null);
+        c.moveToFirst();
+        int cursorcount =c.getCount();
+        if(cursorcount>0){
             return true;
         }
         else{
-        return false;}
+            return false;}
 
     }
-    
+    public boolean Telefonno(String telefon){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String query = "SELECT * FROM müsteri_tablosu WHERE telefon = '"+telefon+"'";
+        Cursor c=db.rawQuery(query, null);
+        c.moveToFirst();
+        int cursorcount =c.getCount();
+        if(cursorcount>0){
+            return true;
+        }
+        else{
+            return false;}
 
 
-    public List<Müsteri> TümKayitlariGetir() {
+    }
+    public boolean Sifreyenile(String telefon,String sifreyenile){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(SIFRE,sifreyenile);
+        db.update(TABLE_NAME,cv,"TELEFON = ?",new String[]{telefon});
+        return true;
+    }
+
+
+
+
+
+    public List<Musteri> TümKayitlariGetir() {
 
         SQLiteDatabase db=this.getReadableDatabase();
         String[] sutunlar=new String[]{AD,MAIL,TELEFON,SIFRE};
@@ -83,19 +105,19 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         int telefonsirano=c.getColumnIndex(TELEFON);
         int sifresirano=c.getColumnIndex(SIFRE);
 
-        List<Müsteri> müsteriList=new ArrayList<Müsteri>();
+        List<Musteri> musteriList =new ArrayList<Musteri>();
         for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
-            Müsteri müsteri=new Müsteri();
-            müsteri.setAdsoyad(c.getString(adsirano));
-            müsteri.setMail(c.getString(mailsirano));
-            müsteri.setTelefon(c.getString(telefonsirano));
-            müsteri.setSifre(c.getString(sifresirano));
+            Musteri musteri =new Musteri();
+            musteri.setAdsoyad(c.getString(adsirano));
+            musteri.setMail(c.getString(mailsirano));
+            musteri.setTelefon(c.getString(telefonsirano));
+            musteri.setSifre(c.getString(sifresirano));
 
-            müsteriList.add(müsteri);
+            musteriList.add(musteri);
             db.close();
         }
 
-        return müsteriList;
+        return musteriList;
     }
     public Cursor getTumKayitlarCursor(){
         SQLiteDatabase db=this.getReadableDatabase();
