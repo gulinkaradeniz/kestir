@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 
 public class giris extends AppCompatActivity {
@@ -53,6 +56,11 @@ public class giris extends AppCompatActivity {
             Log.d("test", "gonder_girisyap: "+String.valueOf(Telefon_sifre));
             if (Telefon_sifre){
                 Intent intent=new Intent(getApplicationContext(), uye_anasayfa.class);
+                intent.putExtra("telno",telefon_giris);
+                startActivity(intent);
+            }
+            else if(telefon_giris.equals("5558610317")||sifre_giris.equals("admin1")){
+                Intent intent=new Intent(getApplicationContext(), admin_anasayfa.class);
                 startActivity(intent);
             }
             else{

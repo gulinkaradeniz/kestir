@@ -23,4 +23,37 @@
     <string name="tarihok">TARİHİ ONAYLA</string>
     <string name="saat">UYGUN SAATLER</string>
     <string name="saatok">SAATİ ONAYLA</string>
+    <string name="dialog_title">İŞLEMLER</string>
+    <string name="ok_label">ONAYLA</string>
+    <string name="dismiss_label">Dismiss</string>
+    <string name="clear_label">Clear All</string>
+    <string-array name="islemler">
+        <item>Saç Kesimi</item>
+        <item>Saç Boyama</item>
+        <item>Fön</item>
+        <item>Kaş Bıyık</item>
+        <item>Makyaj</item>
+    </string-array>
+    <string-array name="saatler">
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+    </string-array>
+    <string name="title_activity_admin_anasayfa">admin_anasayfa</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

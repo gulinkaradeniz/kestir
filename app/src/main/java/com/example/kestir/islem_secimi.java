@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static com.example.kestir.veri_tabani2.ISLEM;
 import static com.example.kestir.veri_tabani2.SAAT;
 import static com.example.kestir.veri_tabani2.TARIH;
@@ -23,6 +25,8 @@ public class islem_secimi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.islem_secimi);
 
+        //long id2=db2.Ekle(ISLEM+"-"+"Saç Boyama",SAAT,TARIH);
+
         checkBox2 = findViewById(R.id.checkBox2);
         checkBox3 = findViewById(R.id.checkBox3);
         checkBox4 = findViewById(R.id.checkBox4);
@@ -30,79 +34,49 @@ public class islem_secimi extends AppCompatActivity {
         checkBox6 = findViewById(R.id.checkBox6);
         button_islem = findViewById(R.id.button_islem);
 
-        final veri_tabani2 db2= new veri_tabani2(getApplicationContext());
+        final veri_tabani2 db2 = new veri_tabani2(getApplicationContext());
         String c2;
 
 
-
-
+    }
+    public void gonder_islem_secimi(View view) {
         checkBox2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            private Object veri_tabani;
-
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    Toast.makeText(islem_secimi.this, "Saç Kesimi seçildi.", Toast.LENGTH_SHORT).show();
-                    //Intent al=getIntent();
-                    //String c2=al.getStringExtra("islem_bilgisi");
-                    long id2=db2.Ekle(ISLEM+"-"+"Saç Kesimi",SAAT,TARIH);
-
-                } else {
-                    Toast.makeText(islem_secimi.this, "Saç Kesimi iptal edildi.", Toast.LENGTH_SHORT).show();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(((CheckBox)compoundButton).isChecked())
+                {
+                    Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
+                    startActivity(intent);
+                    String islem=((CheckBox)compoundButton).getText().toString();
+                    intent.putExtra("SacKesimi",islem);
                 }
             }
         });
-            checkBox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Toast.makeText(islem_secimi.this, "Saç Boyama seçildi.", Toast.LENGTH_SHORT).show();
-                        //Intent al=getIntent();
-                        //String c3=al.getStringExtra("islem_bilgisi");
-                        long id2=db2.Ekle(ISLEM+"-"+"Saç Boyama",SAAT,TARIH);
-                    } else {
-                        Toast.makeText(islem_secimi.this, "Saç Boyama iptal edildi.", Toast.LENGTH_SHORT).show();
-                    }
+        checkBox3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(((CheckBox)compoundButton).isChecked())
+                {
+                    Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
+                    startActivity(intent);
+                    String islem=((CheckBox)compoundButton).getText().toString();
+                    intent.putExtra("SacBoyama",islem);
                 }
-            });
-            checkBox4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Toast.makeText(islem_secimi.this, "Fön seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Fön",SAAT,TARIH);
-                    } else {
-                        Toast.makeText(islem_secimi.this, "Fön iptal edildi.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-            checkBox5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Toast.makeText(islem_secimi.this, "Kaş Bıyık seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Kaş Bıyık",SAAT,TARIH);
-                    } else {
-                        Toast.makeText(islem_secimi.this, "Kaş Bıyık iptal edildi.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-            checkBox6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Toast.makeText(islem_secimi.this, "Makyaj seçildi.", Toast.LENGTH_SHORT).show();
-                        long id2=db2.Ekle(ISLEM+"-"+"Makyaj",SAAT,TARIH);
-                    } else {
-                        Toast.makeText(islem_secimi.this, "Makyaj iptal edildi.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
+            }
+        });
     }
 
-    public void gonder_islem_onay(View view) {
-        Intent intent=new Intent(getApplicationContext(), tarih_secimi.class);
+
+    /*public void gonder_islem_onay(View view) {
+        final Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
         startActivity(intent);
-    }
+        final Object iptalislem = null;
+
+        Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
+                startActivity(intent);
+                intent.putExtra("SacBoyama",islem);
+                Toast.makeText(islem_secimi.this, "Saç Boyama seçildi.", Toast.LENGTH_SHORT).show();
+
+
+    }*/
 }

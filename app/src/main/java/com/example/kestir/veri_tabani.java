@@ -88,6 +88,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         ContentValues cv=new ContentValues();
         cv.put(SIFRE,sifreyenile);
         db.update(TABLE_NAME,cv,"TELEFON = ?",new String[]{telefon});
+
         return true;
     }
 
