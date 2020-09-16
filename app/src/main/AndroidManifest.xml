@@ -14,7 +14,6 @@
         <activity android:name=".sec" />
         <activity android:name=".randevular" />
         <activity android:name=".randevu_basarili" />
-        <activity android:name=".islem_secimi" />
         <activity android:name=".sifre_yenile" />
         <activity android:name=".uye_anasayfa" />
         <activity android:name=".kayit_ol" />

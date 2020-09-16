@@ -26,7 +26,7 @@
     <string name="dialog_title">İŞLEMLER</string>
     <string name="ok_label">ONAYLA</string>
     <string name="dismiss_label">Dismiss</string>
-    <string name="clear_label">Clear All</string>
+    <string name="clear_label">TEMİZLE</string>
     <string-array name="islemler">
         <item>Saç Kesimi</item>
         <item>Saç Boyama</item>

@@ -7,10 +7,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.telephony.SmsMessage;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -18,7 +20,7 @@ import java.util.GregorianCalendar;
 import static com.example.kestir.R.id.textView6;
 
 public class uye_anasayfa extends AppCompatActivity {
-    Button randevularim;
+    Button randevularim,iletisim;
     TextView textView6;
 
     @Override
@@ -30,6 +32,7 @@ public class uye_anasayfa extends AppCompatActivity {
         String alinan=al.getStringExtra("telno");
         textView6.setText(alinan);
         randevularim=findViewById(R.id.randevularim);
+        iletisim=findViewById(R.id.iletisim);
         randevularim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,4 +52,19 @@ public class uye_anasayfa extends AppCompatActivity {
        startActivity(intent);
     }
 
+    public void gonder_iletisim(View view) {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(uye_anasayfa.this);
+        mBuilder.setTitle("İLETİŞİM");
+        mBuilder.setMessage("0555 861 0317");
+        mBuilder.setPositiveButton("TAMAM", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+
+    }
 }

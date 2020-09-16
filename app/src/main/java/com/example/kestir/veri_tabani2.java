@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,20 +79,45 @@ public class veri_tabani2 extends SQLiteOpenHelper {
 
         return veriler;
     }
-    public boolean Telno(String telno){
+    public List<String> VeriListele3(String date) {
+
+        List<String>veriler=new ArrayList<String>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        String[] sutunlar={ISLEM,SAAT,TARIH,TELNO};
+        Cursor c=db.query(TABLE_NAME2,sutunlar,TARIH+"=?", new String[]{String.valueOf(date)},null,null,null);
+        while (c.moveToNext())
+        {
+            veriler.add(c.getString(1));
+
+        }
+
+        return veriler;
+    }
+    public boolean TarihKontrol(String tarih){
         SQLiteDatabase db=this.getReadableDatabase();
-        //String query = "SELECT * FROM siparis_tablosu WHERE telefon = '"+telno+"'";
-        Cursor c=db.rawQuery("SELECT * FROM siparis_tablosu WHERE telno like "+telno+"", null);
-        c.moveToNext();
+        String query = "SELECT * FROM siparis_tablosu WHERE tarih = '"+tarih+"'";
+        Cursor c=db.rawQuery(query, null);
+        c.moveToFirst();
         int cursorcount =c.getCount();
         if(cursorcount>0){
             return true;
         }
         else{
             return false;}
-
-
     }
+    public boolean TarihSaatKontrol(String tarih,String saat){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String query = "SELECT * FROM siparis_tablosu WHERE tarih = '"+tarih+"'AND saat = '"+saat+"'";
+        Cursor c=db.rawQuery(query, null);
+        c.moveToFirst();
+        int cursorcount =c.getCount();
+        if(cursorcount>0){
+            return true;
+        }
+        else{
+            return false;}
+    }
+
 
 
 

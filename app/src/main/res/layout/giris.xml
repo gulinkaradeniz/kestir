@@ -112,7 +112,6 @@
         android:id="@+id/imageView4"
         android:layout_width="163dp"
         android:layout_height="221dp"
-        android:onClick="gonder_islem_secimi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

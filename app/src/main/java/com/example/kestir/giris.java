@@ -59,7 +59,7 @@ public class giris extends AppCompatActivity {
                 intent.putExtra("telno",telefon_giris);
                 startActivity(intent);
             }
-            else if(telefon_giris.equals("5558610317")||sifre_giris.equals("admin1")){
+            else if(telefon_giris.equals("5558610317")&&sifre_giris.equals("admin1")){
                 Intent intent=new Intent(getApplicationContext(), admin_anasayfa.class);
                 startActivity(intent);
             }

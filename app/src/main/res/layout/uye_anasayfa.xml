@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.16000003" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/iletisim"
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:layout_marginBottom="220dp"
@@ -64,11 +64,12 @@
         android:text="@string/iletisim"
         android:textAllCaps="false"
         android:textSize="18sp"
+        android:onClick="gonder_iletisim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/button4"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -78,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/iletisim" />
 
     <TextView
         android:id="@+id/textView6"

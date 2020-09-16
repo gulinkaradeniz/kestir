@@ -18,7 +18,7 @@ public class randevu_basarili extends AppCompatActivity {
     }
 
     public void gonder_randevu_basarili(View view) {
-        Intent intent=new Intent(getApplicationContext(), uye_anasayfa.class);
+        Intent intent=new Intent(getApplicationContext(), giris.class);
         startActivity(intent);
 
     }
