@@ -3,31 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/resim13"
     android:layout_height="match_parent"
-    tools:context=".admin_anasayfa">
+    android:background="@drawable/resim13"
+    android:scrollbarSize="@dimen/nav_header_vertical_spacing">
 
     <ListView
-        android:id="@+id/admin_anasayfa"
-        android:layout_width="355dp"
-        android:layout_height="475dp"
+        android:id="@+id/listview"
+        android:layout_width="305dp"
+        android:layout_height="597dp"
+        android:scrollbarSize="10dp"
+        android:textFilterEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22000003" />
-    <Button
-        android:id="@+id/button_admin_anasayfa"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="LİSTELE"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

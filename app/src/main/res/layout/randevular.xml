@@ -9,27 +9,16 @@
 
 
     <ListView
-        android:layout_width="350dp"
-        android:id="@+id/islemler"
-        android:layout_height="350dp"
+        android:id="@+id/listView"
+        android:layout_width="305dp"
+        android:layout_height="597dp"
+        android:scrollbarSize="10dp"
+        android:textFilterEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26999998" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_islem_onay"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:text="LİSTELE"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
 
     <TextView
         android:id="@+id/textView7"
@@ -37,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/renk2"
         android:textSize="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/islemler"
+        app:layout_constraintBottom_toTopOf="@+id/listview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

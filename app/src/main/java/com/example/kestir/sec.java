@@ -27,14 +27,11 @@ import java.util.List;
 import java.util.zip.CheckedInputStream;
 import java.util.zip.CheckedOutputStream;
 
-import static com.example.kestir.veri_tabani2.ISLEM;
-import static com.example.kestir.veri_tabani2.SAAT;
-import static com.example.kestir.veri_tabani2.TARIH;
 
 public class sec extends AppCompatActivity {
     Button buttonislemler,selectDate,buttonsaat,okey,okey2;
     ListView liste;
-    TextView textView4,textView8;
+    TextView textView4,textView8,textView9;
     TextView date;
     TextView tvsaat;
     TextView textView5;
@@ -44,13 +41,17 @@ public class sec extends AppCompatActivity {
     String[] listItems;
     boolean[] checkedItems;
     ArrayList<Integer> islemItems= new ArrayList<>();
-    private veri_tabani2 db;
+    private veri_tabani db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sec);
-        db = new veri_tabani2(getApplicationContext());
+        textView9=findViewById(R.id.textView9);
+        Intent al= getIntent();
+        String alinan=al.getStringExtra("telno");
+        textView9.setText(alinan);
+        db = new veri_tabani(getApplicationContext());
 
         textView4=findViewById(R.id.textView4);
         buttonislemler=findViewById(R.id.buttonislemler);
@@ -135,11 +136,11 @@ public class sec extends AppCompatActivity {
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 date.setText(day+"/"+(month+1)+"/"+year);
                                 String tarih=date.getText().toString();
-                                veri_tabani2 db = new veri_tabani2(getApplicationContext());
+                                veri_tabani db = new veri_tabani(getApplicationContext());
                                 boolean TarihKontrol = db.TarihKontrol(tarih);
                                 if(TarihKontrol){
-                                    veri_tabani2 veri_tabani2=new veri_tabani2(sec.this);
-                                    List<String> Veriler=veri_tabani2.VeriListele3(tarih);
+                                    veri_tabani veri_tabani=new veri_tabani(sec.this);
+                                    List<String> Veriler=veri_tabani.VeriListele3(tarih);
                                     ArrayAdapter<String> adapter=new ArrayAdapter<String>(sec.this,android.R.layout.simple_list_item_1,android.R.id.text1,Veriler);
                                     liste.setAdapter(adapter);
                                     AlertDialog.Builder mBuilder = new AlertDialog.Builder(sec.this);
@@ -204,18 +205,20 @@ public class sec extends AppCompatActivity {
                 if(islem.equals("")||saat.equals("")||tarih.equals("")){
                     Toast.makeText(sec.this, "BOŞ ALAN BIRAKMAYINIZ", Toast.LENGTH_SHORT).show();
                 }else{
-                    veri_tabani2 db = new veri_tabani2(getApplicationContext());
+                    veri_tabani db = new veri_tabani(getApplicationContext());
                     boolean TarihSaatKontrol = db.TarihSaatKontrol(tarih,saat);
                     if (TarihSaatKontrol) {
                         Toast.makeText(sec.this, "BAŞKA BİR SAATE RANDEVU ALINIZ", Toast.LENGTH_SHORT).show();
+                        tvsaat.setText("");
                     }else {
-                        veri_tabani2 db2=new veri_tabani2(sec.this);
+                        veri_tabani db2=new veri_tabani(sec.this);
                         long id2=db2.Ekle(islem,saat,tarih,telno);
+                        String veri=textView9.getText().toString();
                         Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
+                        intent.putExtra("telno",veri);
                         startActivity(intent);
                     }
                 }
-
 
             }
         });
