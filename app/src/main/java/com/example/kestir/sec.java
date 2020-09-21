@@ -161,6 +161,7 @@ public class sec extends AppCompatActivity {
                                 //date.setText(day+"/"+(month+1)+"/"+year);
                             }
                         },year, month, dayOfMonth);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 datePickerDialog.show();
             }
         });

@@ -159,21 +159,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         Cursor c=db.rawQuery(query, null);
         while (c.moveToNext())
         {
-            veriler.add(c.getString(0)+"-"+c.getString(6)+"-"+c.getString(4));
-            veriler.add(c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
-
-        }
-
-        return veriler;
-    }
-    public List<String> VeriListele21(String telefon_giris) {
-        List<String>veriler=new ArrayList<String>();
-        SQLiteDatabase db=this.getWritableDatabase();
-        String query = "SELECT * FROM siparis_tablosu INNER JOIN musteri_tablosu ON musteri_tablosu.veri=siparis_tablosu.veri";
-        Cursor c=db.rawQuery(query, null);
-        while (c.moveToNext())
-        {
-            veriler.add(c.getString(0)+"-"+c.getString(6)+"-"+c.getString(4));
+            veriler.add(c.getString(0)+"-"+c.getString(6)+"-"+c.getString(8));
             veriler.add(c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
 
         }
