@@ -10,8 +10,11 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.strictmode.CleartextNetworkViolation;
+import android.util.Log;
 import android.view.ActionProvider;
+import android.view.ContextMenu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -22,23 +25,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.RunnableFuture;
 import java.util.zip.CheckedInputStream;
 import java.util.zip.CheckedOutputStream;
 
 
 public class sec extends AppCompatActivity {
     Button buttonislemler,selectDate,buttonsaat,okey,okey2;
-    ListView liste;
-    TextView textView4,textView8,textView9;
+    ListView liste,list;
+    TextView textView4,textView8,textView9,textView18;
     TextView date;
     TextView tvsaat;
     TextView textView5;
     DatePickerDialog datePickerDialog;
     int year,month,dayOfMonth;
     Calendar calendar;
-    String[] listItems;
+    String[] listItems = {};
     boolean[] checkedItems;
     ArrayList<Integer> islemItems= new ArrayList<>();
     private veri_tabani db;
@@ -47,6 +53,8 @@ public class sec extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sec);
+        list=findViewById(R.id.list);
+        textView18=findViewById(R.id.textView18);
         textView9=findViewById(R.id.textView9);
         Intent al= getIntent();
         String alinan=al.getStringExtra("telno");
@@ -56,7 +64,9 @@ public class sec extends AppCompatActivity {
         textView4=findViewById(R.id.textView4);
         buttonislemler=findViewById(R.id.buttonislemler);
 
-        listItems=getResources().getStringArray(R.array.islemler);
+        islemler_veri_tabani islemler_veri_tabani=new islemler_veri_tabani(sec.this);
+        final List<String> Veriler = islemler_veri_tabani.İslemListele2();
+        listItems = Veriler.toArray(new String[0]);
         checkedItems=new boolean[listItems.length];
         buttonislemler.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,19 +98,8 @@ public class sec extends AppCompatActivity {
                             }
                         }
                         textView4.setText(item);
-                        /*Intent intent=new Intent(getApplicationContext(), tarih_secimi.class);
-                        startActivity(intent);
-                        String islem=textView4.getText().toString();
-                        intent.putExtra("islem_bilgisi",islem);*/
-
                     }
                 });
-                /*mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });*/
                 mBuilder.setNeutralButton(R.string.clear_label, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
@@ -203,6 +202,8 @@ public class sec extends AppCompatActivity {
                 String saat=tvsaat.getText().toString();
                 String tarih=date.getText().toString();
                 String telno=textView5.getText().toString();
+                Boolean durum=true;
+                Boolean iptal=true;
                 if(islem.equals("")||saat.equals("")||tarih.equals("")){
                     Toast.makeText(sec.this, "BOŞ ALAN BIRAKMAYINIZ", Toast.LENGTH_SHORT).show();
                 }else{
@@ -211,9 +212,10 @@ public class sec extends AppCompatActivity {
                     if (TarihSaatKontrol) {
                         Toast.makeText(sec.this, "BAŞKA BİR SAATE RANDEVU ALINIZ", Toast.LENGTH_SHORT).show();
                         tvsaat.setText("");
-                    }else {
+                    }
+                    else {
                         veri_tabani db2=new veri_tabani(sec.this);
-                        long id2=db2.Ekle(islem,saat,tarih,telno);
+                        long id2=db2.Ekle(islem,saat,tarih,telno,durum,iptal);
                         String veri=textView9.getText().toString();
                         Intent intent=new Intent(getApplicationContext(), randevu_basarili.class);
                         intent.putExtra("telno",veri);

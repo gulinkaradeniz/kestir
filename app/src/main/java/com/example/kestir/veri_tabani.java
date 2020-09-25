@@ -2,15 +2,14 @@ package com.example.kestir;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
+import android.util.Config;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 //Veri tabanı oluşumu
@@ -18,6 +17,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "musteri_tablosu";
     private static final String TABLE_NAME2 = "siparis_tablosu";
+    private static final String TABLE_NAME3 = "geldi_tablosu";
     private static final String DATABASE_NAME = "veritabani";
 
     public static final String ID ="_id" ;
@@ -26,18 +26,16 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
     public static final String TELEFON ="telefon";
     public static final String SIFRE ="sifre";
 
-    public static final String ID2 = "_id";
+    public static final String ID2 = "_id2";
     public static final String ISLEM = "islem";
     public static final String TARIH = "tarih";
     public static final String SAAT = "saat";
     public static final String TELNO = "telno";
+    public static final String DURUM = "durum";
+    public static final String IPTAL = "iptal";
 
-    public List<String> ArrayList;
-    //private Object Müsteri;
-
-    //public veri_tabani2(Context context) {
-       // super(context, DATABASE_NAME, null, 1);
-    //}
+    public static final String ID3 ="_id" ;
+    public static final String VERI3 = "veri3";
 
     public veri_tabani(Context context) {
         super(context,DATABASE_NAME, null, 1);
@@ -47,15 +45,18 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String TABLE1 ="CREATE TABLE " +TABLE_NAME+"(" +ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +AD+" TEXT," +MAIL+" TEXT," +TELEFON+" TEXT," +SIFRE+" INT)";
-        String TABLE2 = "CREATE TABLE " + TABLE_NAME2 + "(" + ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT," + ISLEM + " TEXT," + TARIH + " DATE," + SAAT + " TEXT,"+ TELNO + " TEXT)";
+        String TABLE2 = "CREATE TABLE " + TABLE_NAME2 + "(" + ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT," + ISLEM + " TEXT," + TARIH + " DATE," + SAAT + " TEXT,"+ TELNO + " TEXT,"+ DURUM + " BOOLEAN,"+ IPTAL + " BOOLEAN)";
+        String TABLE3 = "CREATE TABLE " + TABLE_NAME3 + "(" + ID3 + " INTEGER PRIMARY KEY AUTOINCREMENT,"+VERI3+" TEXT)";
         db.execSQL(TABLE1);
         db.execSQL(TABLE2);
+        db.execSQL(TABLE3);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME2);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME3);
         onCreate(db);
 
     }
@@ -123,7 +124,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         return veriler;
     }
     //2.tablo için
-    public long Ekle(String islem, String saat, String tarih,String telno){
+    public long Ekle(String islem, String saat, String tarih, String telno, Boolean durum, Boolean iptal){
         SQLiteDatabase db2=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
 
@@ -131,6 +132,8 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         cv.put(SAAT,saat.trim());
         cv.put(TARIH,tarih.trim());
         cv.put(TELNO,telno.trim());
+        cv.put(DURUM,durum.booleanValue());
+        cv.put(IPTAL,iptal.booleanValue());
 
         long id2=db2.insert(TABLE_NAME2,null,cv);
 
@@ -141,7 +144,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
         List<String>veriler=new ArrayList<String>();
         SQLiteDatabase db=this.getWritableDatabase();
-        String[] sutunlar={ISLEM,SAAT,TARIH,TELNO};
+        String[] sutunlar={ISLEM,SAAT,TARIH,TELNO,DURUM,IPTAL};
         Cursor c=db.query(TABLE_NAME2,sutunlar,TELNO+"=?", new String[]{String.valueOf(telno)},null,null,null);
         while (c.moveToNext())
         {
@@ -155,12 +158,11 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
         List<String>veriler=new ArrayList<String>();
         SQLiteDatabase db=this.getWritableDatabase();
-        String query = "SELECT * FROM siparis_tablosu INNER JOIN musteri_tablosu ON musteri_tablosu.telefon=siparis_tablosu.telno";
+        String query = "SELECT * FROM siparis_tablosu INNER JOIN musteri_tablosu ON musteri_tablosu.telefon=siparis_tablosu.telno AND durum=true AND iptal=true";
         Cursor c=db.rawQuery(query, null);
         while (c.moveToNext())
         {
-            veriler.add(c.getString(0)+"-"+c.getString(6)+"-"+c.getString(8));
-            veriler.add(c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
+            veriler.add(c.getString(0)+"-"+c.getString(8)+"-"+c.getString(10)+"-"+c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
 
         }
 
@@ -180,7 +182,7 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
         List<String>veriler=new ArrayList<String>();
         SQLiteDatabase db=this.getWritableDatabase();
-        String[] sutunlar={ISLEM,SAAT,TARIH,TELNO};
+        String[] sutunlar={ISLEM,SAAT,TARIH,TELNO,DURUM,IPTAL};
         Cursor c=db.query(TABLE_NAME2,sutunlar,TARIH+"=?", new String[]{String.valueOf(date)},null,null,null);
         while (c.moveToNext())
         {
@@ -213,6 +215,51 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
         }
         else{
             return false;}
+    }
+    public void verisil(long id)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.delete(TABLE_NAME2,ID+"="+id,null);
+        db.close();
+    }
+    //3.tablo
+    public Boolean update1(boolean b,long id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(DURUM,b);
+        db.update(TABLE_NAME2, cv, ID2 + "=" + id, null);
+        return true;
+    }
+    public Boolean update2(boolean b,long id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(IPTAL,b);
+        db.update(TABLE_NAME2, cv, ID2 + "=" + id, null);
+        return true;
+    }
+
+
+    public long GeldiEkle(String j){
+        SQLiteDatabase db2=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(VERI3,j);
+        long id2=db2.insert(TABLE_NAME3,null,cv);
+        db2.close();
+        return id2;
+    }
+    public List<String> VeriListeleGeldi() {
+
+        List<String>veriler=new ArrayList<String>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        String[] sutunlar={VERI3};
+        Cursor c=db.query(TABLE_NAME3,sutunlar,null,null ,null,null,null);
+        while (c.moveToNext())
+        {
+            veriler.add(c.getString(0));
+
+        }
+
+        return veriler;
     }
 
 }

@@ -45,6 +45,10 @@
         <item>17:00</item>
         <item>18:00</item>
     </string-array>
+    <string-array name="yesno">
+        <item>GELDİ</item>
+        <item>GELMEDİ</item>
+    </string-array>
     <string name="title_activity_admin_anasayfa">admin_anasayfa</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -10,54 +10,25 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="325dp"
-        android:layout_height="517dp"
+        android:layout_height="617dp"
         android:background="@drawable/button"
         android:backgroundTint="@color/renk1"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25"></LinearLayout>
+        android:orientation="horizontal"></LinearLayout>
 
     <ListView
-        android:id="@+id/veriler"
+        android:id="@+id/listgeldi"
         android:layout_width="305dp"
-        android:layout_height="497dp"
+        android:layout_height="597dp"
         android:longClickable="false"
         android:scrollbarSize="10dp"
         android:textFilterEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="80dp"
-        android:background="@color/renk3"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.6">
-
-        <LinearLayout
-            android:layout_width="205dp"
-            android:layout_height="80dp"
-            android:orientation="vertical"></LinearLayout>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

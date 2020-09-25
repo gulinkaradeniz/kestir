@@ -68,4 +68,10 @@ public class giris extends AppCompatActivity {
             }
         }
     }
+
+    public void gonder_listele(View view) {
+        Intent intent=new Intent(getApplicationContext(), islem_degistir.class);
+        startActivity(intent);
+
+    }
 }

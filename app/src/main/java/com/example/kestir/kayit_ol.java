@@ -61,13 +61,14 @@ public class kayit_ol extends AppCompatActivity {
                 }
                 else if(sifre.length()<6){
                     et_sifre.setText("");
-                    Toast.makeText(kayit_ol.this, "ŞİFRENİZ 6 KARAKTERDEN KÜÇÜK OLMAMALI.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(kayit_ol.this, "ŞİFRENİZ 6 KARAKTER OLMALI.", Toast.LENGTH_LONG).show();
                 }
                 else{
                 db= new veri_tabani(getApplicationContext());
                 boolean id=db.KayitEkle(musteri);
                 //Toast.makeText(kayit_ol.this, "KAYIT BAŞARILI.", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(getApplicationContext(), giris.class);
+                Intent intent=new Intent(getApplicationContext(), uye_anasayfa.class);
+                intent.putExtra("telno",telefon);
                 startActivity(intent);
                     et_adsoyad.setText("");
                     et_mail.setText("");
