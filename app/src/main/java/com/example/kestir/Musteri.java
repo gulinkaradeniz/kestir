@@ -10,7 +10,7 @@ public class Musteri {
 
 
     //Yapıcı metod
-    public Musteri() {
+    public Musteri(String adsoyad1, String telefon1) {
         //Yapıcı metod
     }
 

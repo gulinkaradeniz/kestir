@@ -20,6 +20,8 @@ public class islemler_veri_tabani extends SQLiteOpenHelper {
     public static final String ID = "_id";
     public static final String ISLEMLER = "islemler";
     public static final String ISLEMSAATI = "islemsaati";
+    public static final String FIYAT = "fiyat";
+
 
     public islemler_veri_tabani(Context context) {
         super(context,DATABASE_NAME, null, 1);
@@ -27,7 +29,7 @@ public class islemler_veri_tabani extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String TABLE = "CREATE TABLE " + TABLE_NAME + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+ISLEMLER+" TEXT,"+ ISLEMSAATI + " TEXT)";
+        String TABLE = "CREATE TABLE " + TABLE_NAME + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+ISLEMLER+" TEXT,"+ ISLEMSAATI + " TEXT,"+ FIYAT + " DOUBLE)";
         db.execSQL(TABLE);
 
     }
@@ -44,6 +46,8 @@ public class islemler_veri_tabani extends SQLiteOpenHelper {
 
         cv.put(ISLEMLER, islem.getIslem1());
         cv.put(ISLEMSAATI, islem.getIslem_saati());
+        cv.put(FIYAT, islem.getfiyat());
+
 
         long id=db2.insert(TABLE_NAME,null,cv);
         if(id==-1) return false;
@@ -53,11 +57,11 @@ public class islemler_veri_tabani extends SQLiteOpenHelper {
 
         List<String>veriler=new ArrayList<String>();
         SQLiteDatabase db=this.getWritableDatabase();
-        String[] sutunlar={ID,ISLEMLER,ISLEMSAATI};
+        String[] sutunlar={ID,ISLEMLER,ISLEMSAATI,FIYAT};
         Cursor c=db.query(TABLE_NAME,sutunlar,null,null ,null,null,null);
         while (c.moveToNext())
         {
-            veriler.add(c.getString(0)+"-"+c.getString(1)+"-"+c.getString(2));
+            veriler.add(c.getString(0)+"-"+c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3)+" TL");
 
         }
 
@@ -69,11 +73,12 @@ public class islemler_veri_tabani extends SQLiteOpenHelper {
         db.delete(TABLE_NAME,ID+"="+id,null);
         db.close();
     }
-    public Boolean update_islemler(String a,String b,long id){
+    public Boolean update_islemler(String a, String b, String c, long id){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
         cv.put(ISLEMLER,a);
         cv.put(ISLEMSAATI,b);
+        cv.put(FIYAT,c);
         db.update(TABLE_NAME, cv, ID + "=" + id, null);
         return true;
     }
@@ -107,11 +112,11 @@ public class islemler_veri_tabani extends SQLiteOpenHelper {
 
         List<String>veriler=new ArrayList<String>();
         SQLiteDatabase db=this.getWritableDatabase();
-        String[] sutunlar={ID,ISLEMLER,ISLEMSAATI};
+        String[] sutunlar={ID,ISLEMLER,ISLEMSAATI,FIYAT};
         Cursor c=db.query(TABLE_NAME,sutunlar,null,null ,null,null,null);
         while (c.moveToNext())
         {
-            veriler.add(c.getString(1));
+            veriler.add(c.getString(1)+"-"+c.getString(3)+" TL");
 
         }
 

@@ -2,8 +2,12 @@ package com.example.kestir;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.se.omapi.Session;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +21,7 @@ public class giris extends AppCompatActivity {
 
     EditText et_telefon_giris,et_sifre_giris;
     private veri_tabani db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +75,7 @@ public class giris extends AppCompatActivity {
     }
 
     public void gonder_listele(View view) {
-        Intent intent=new Intent(getApplicationContext(), islem_degistir.class);
+        Intent intent=new Intent(getApplicationContext(), uye_degistir.class);
         startActivity(intent);
 
     }

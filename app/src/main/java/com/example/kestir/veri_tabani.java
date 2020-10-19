@@ -113,11 +113,11 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
     public List<String> Veriler2() {
         List<String>veriler=new ArrayList<String>();
         SQLiteDatabase db=this.getWritableDatabase();
-        String[] sutunlar={AD,MAIL,TELEFON,SIFRE};
+        String[] sutunlar={ID,AD,MAIL,TELEFON,SIFRE};
         Cursor c=db.query(TABLE_NAME,sutunlar,null, null,null,null,null);
         while (c.moveToNext())
         {
-            veriler.add(c.getString(0)+"-"+c.getString(2));
+            veriler.add(c.getString(0)+"-"+c.getString(1)+"-"+c.getString(3));
 
         }
 
@@ -261,7 +261,48 @@ public class veri_tabani<SIFRE> extends SQLiteOpenHelper {
 
         return veriler;
     }
+    public Boolean update_uyeler(String a, String b, long id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(AD,a);
+        cv.put(TELEFON,b);
+        db.update(TABLE_NAME, cv, ID + "=" + id, null);
+        return true;
+    }
+    public void uyesil(long id)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.delete(TABLE_NAME,ID+"="+id,null);
+        db.close();
+    }
+    public List<String> İptalVeriListele2() {
 
+        List<String>veriler=new ArrayList<String>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        String query = "SELECT * FROM siparis_tablosu INNER JOIN musteri_tablosu ON musteri_tablosu.telefon=siparis_tablosu.telno AND iptal=false";
+        Cursor c=db.rawQuery(query, null);
+        while (c.moveToNext())
+        {
+            veriler.add(c.getString(0)+"-"+c.getString(8)+"-"+c.getString(10)+"-"+c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
+
+        }
+
+        return veriler;
+    }
+    public List<String> TamamlananVeriListele2() {
+
+        List<String>veriler=new ArrayList<String>();
+        SQLiteDatabase db=this.getWritableDatabase();
+        String query = "SELECT * FROM siparis_tablosu INNER JOIN musteri_tablosu ON musteri_tablosu.telefon=siparis_tablosu.telno AND durum=false";
+        Cursor c=db.rawQuery(query, null);
+        while (c.moveToNext())
+        {
+            veriler.add(c.getString(0)+"-"+c.getString(8)+"-"+c.getString(10)+"-"+c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
+
+        }
+
+        return veriler;
+    }
 }
 
 

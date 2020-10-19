@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class islem_degistir extends AppCompatActivity {
-    EditText islem1,islem_saati;
+    EditText islem1,islem_saati,fiyat;
     Button ekle,düzenle;
     ListView islemler;
 
@@ -29,6 +29,7 @@ public class islem_degistir extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.islem_degistir);
         islem1=findViewById(R.id.islem1);
+        fiyat=findViewById(R.id.fiyat);
         düzenle=findViewById(R.id.düzenle);
         islem_saati=findViewById(R.id.islem_saati);
         ekle=findViewById(R.id.ekle);
@@ -42,9 +43,10 @@ public class islem_degistir extends AppCompatActivity {
             public void onClick(View view) {
                 String islem=islem1.getText().toString();
                 String islemsaati=islem_saati.getText().toString();
+                String fiyat1=fiyat.getText().toString();
                 islemler_veri_tabani db2;
-                Islem islem2 =new Islem(islem,islemsaati);
-                if(islem.equals("")||islemsaati.equals("")){
+                Islem islem2 =new Islem(islem,islemsaati,fiyat1);
+                if(islem.equals("")||islemsaati.equals("")||fiyat1.equals("")){
                     Toast.makeText(islem_degistir.this, "BOŞ ALAN BIRAKMAYINIZ", Toast.LENGTH_SHORT).show();
                 }else{
                     db2= new islemler_veri_tabani(getApplicationContext());
@@ -86,20 +88,23 @@ public class islem_degistir extends AppCompatActivity {
                         final long secilen_id=Long.parseLong(dizi[0].trim());
                         String secilen_islem=dizi[1].trim();
                         String secilen_islemsaati=dizi[2].trim();
+                        String secilen_fiyat=dizi[3].trim();
                         islem1.setText(secilen_islem);
                         islem_saati.setText(secilen_islemsaati);
+                        fiyat.setText(secilen_fiyat);
                         islemler_veri_tabani islemler_veri_tabani=new islemler_veri_tabani(islem_degistir.this);
                         düzenle.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 String islem=islem1.getText().toString();
                                 String islemsaati=islem_saati.getText().toString();
-                                Islem islem2 =new Islem(islem,islemsaati);
-                                if(islem.equals("")||islemsaati.equals("")){
+                                String fiyat1= fiyat.getText().toString();
+                                Islem islem2 =new Islem(islem,islemsaati,fiyat1);
+                                if(islem.equals("")||islemsaati.equals("")||fiyat1.equals("")){
                                     Toast.makeText(islem_degistir.this, "BOŞ ALAN BIRAKMAYINIZ", Toast.LENGTH_SHORT).show();
                                 }else{
                                     islemler_veri_tabani islemler_veri_tabani= new islemler_veri_tabani(getApplicationContext());
-                                    islemler_veri_tabani.update_islemler(islem,islemsaati,secilen_id);
+                                    islemler_veri_tabani.update_islemler(islem,islemsaati,fiyat1,secilen_id);
                                     List<String> Veriler=islemler_veri_tabani.İslemListele();
                                     ArrayAdapter<String> adapter=new ArrayAdapter<String>(islem_degistir.this,android.R.layout.simple_list_item_1,android.R.id.text1,Veriler);
                                     islemler.setAdapter(adapter);
